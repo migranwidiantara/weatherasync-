@@ -14,7 +14,7 @@ const Header = (props) => {
 };
 const styles = {
     backFooter: {
-      backgroundColor: '#006064',
+      backgroundColor: '#00ACC1',
       justifyContent: 'center',
       alignItems: 'center',
       padding: 10,

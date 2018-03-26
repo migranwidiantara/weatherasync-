@@ -1,10 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Image, Dimensions } from 'react-native';
 
-const windIcon = require('./img/wind.png');
-const tempIcon = require('./img/temp.png');
-const mainIcon = require('./img/main.png');
-const levelIcon = require('./img/sea.png');
+const cityicon = require('./img/city.png');
+const mainicon = require('./img/main.png');
+const descriptionicon = require('./img/description.png');
+const tempicon = require('./img/temp.png');
+const sunriseicon = require('./img/sunrise.png');
+const sunseticon = require('./img/sunset.png');
+const pressureicon = require('./img/pressure.png');
+const humidityicon = require('./img/humidity.png');
+const sea_levelicon = require('./img/sea_level.png');
+const grnd_levelicon = require('./img/grnd_level.png');
+const speedicon = require('./img/speed.png');
 
 export default class Weather extends React.Component {
 constructor(props) {
@@ -58,9 +65,9 @@ constructor(props) {
     <View style={styles.containerMain}>
       <View style={styles.boxInput}>
 
-          <Text style={{ textAlign: 'center', paddingTop: 15, paddingBottom: 15,fontSize: 20 }}> Masukan Nama Kota </Text>
+          <Text style={{ textAlign: 'center', paddingTop: 15, paddingBottom: 15, color: 'white', fontSize: 20 }}> Masukan Nama Kota </Text>
           <TextInput
-                style={{ height: 40, color: 'white', padding: 9}}
+              style={{ height: 40, width: 150, backgroundColor: 'white', color: 'black', borderColor: 'black', borderWidth: 1, padding: 9}}
               placeholder=" Masukan Nama kota "
               onChangeText={(city) => this.setState({ city })}
             />
@@ -77,11 +84,14 @@ constructor(props) {
 
       <View style={styles.boxOutput}>
         <View style={styles.button}>
+        <View style={styles.iconContainer}>
+          <Image source={cityicon} style={styles.icon} />
+       </View>
           <Text> City : { this.state.city} </Text>
         </View>
         <View style={styles.button}>
         <View style={styles.iconContainer}>
-          <Image source={tempIcon} style={styles.icon} />
+          <Image source={tempicon} style={styles.icon} />
        </View>
           <Text> Temp : { this.state.forecast.temp} </Text>
         </View>
@@ -89,27 +99,27 @@ constructor(props) {
       <View style={styles.boxOutput}>
         <View style={styles.button}>
         <View style={styles.iconContainer}>
-          <Image source={mainIcon} style={styles.icon} />
+          <Image source={mainicon} style={styles.icon} />
        </View>
           <Text> Main : { this.state.forecast.main} </Text>
         </View>
         <View style={styles.button}>
         <View style={styles.iconContainer}>
-          <Image source={mainIcon} style={styles.icon} />
+          <Image source={descriptionicon} style={styles.icon} />
        </View>
-          <Text> Main Desc : { this.state.forecast.description} </Text>
+          <Text> Desc : { this.state.forecast.description} </Text>
         </View>
       </View>
       <View style={styles.boxOutput}>
         <View style={styles.button}>
         <View style={styles.iconContainer}>
-          <Image source={mainIcon} style={styles.icon} />
+          <Image source={sunriseicon} style={styles.icon} />
        </View>
           <Text> Sunrise : { this.state.forecast.sunrise} </Text>
         </View>
         <View style={styles.button}>
         <View style={styles.iconContainer}>
-          <Image source={mainIcon} style={styles.icon} />
+          <Image source={sunseticon} style={styles.icon} />
        </View>
           <Text> Sunset : { this.state.forecast.sunset} </Text>
         </View>
@@ -117,13 +127,13 @@ constructor(props) {
       <View style={styles.boxOutput}>
         <View style={styles.button}>
         <View style={styles.iconContainer}>
-          <Image source={levelIcon} style={styles.icon} />
+          <Image source={pressureicon} style={styles.icon} />
        </View>
           <Text> Pressure : { this.state.forecast.pressure} </Text>
         </View>
         <View style={styles.button}>
         <View style={styles.iconContainer}>
-          <Image source={levelIcon} style={styles.icon} />
+          <Image source={humidityicon} style={styles.icon} />
        </View>
           <Text> Humidity : { this.state.forecast.humidity} </Text>
         </View>
@@ -131,13 +141,13 @@ constructor(props) {
       <View style={styles.boxOutput}>
         <View style={styles.button}>
         <View style={styles.iconContainer}>
-          <Image source={levelIcon} style={styles.icon} />
+          <Image source={sea_levelicon} style={styles.icon} />
        </View>
           <Text> Sea Level : { this.state.forecast.sea_level} </Text>
         </View>
         <View style={styles.button}>
         <View style={styles.iconContainer}>
-          <Image source={levelIcon} style={styles.icon} />
+          <Image source={grnd_levelicon} style={styles.icon} />
        </View>
           <Text> Ground Level : { this.state.forecast.grnd_level} </Text>
         </View>
@@ -145,7 +155,7 @@ constructor(props) {
       <View style={styles.boxOutput}>
         <View style={styles.button}>
         <View style={styles.iconContainer}>
-          <Image source={windIcon} style={styles.icon} />
+          <Image source={speedicon} style={styles.icon} />
        </View>
           <Text> Wind Speed : { this.state.forecast.speed} </Text>
         </View>
@@ -156,7 +166,8 @@ constructor(props) {
 }
 const styles = StyleSheet.create({
   containerMain: {
-    backgroundColor: '#BBDEFB',
+    marginTop: 10,
+    backgroundColor: '#00ACC1',
     flex: 1,
     flexDirection: 'column'
   },
@@ -174,15 +185,15 @@ const styles = StyleSheet.create({
   boxOutput: {
     flex: 0.3,
     backgroundColor: '#B2EBF2',
-    marginTop: 10,
-    marginBottom: 10,
     justifyContent: 'space-around',
     alignItems: 'center',
     flexDirection: 'row'
   },
   button: {
     width: 220,
-    height: 80,
+    height: 50,
+    borderColor: 'black',
+    borderWidth: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: 'white',
@@ -190,15 +201,15 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     alignItems: 'center',
-    backgroundColor: '#feb401',
-    borderColor: '#feaf12',
+    backgroundColor: 'white',
+    borderColor: 'black',
     borderWidth: 1,
     justifyContent: 'center',
-    height: 80,
-    width: 80,
+    height: 50,
+    width: 50,
   },
   icon: {
-    height: 80,
-    width: 80,
+    height: 45,
+    width: 45,
   }
 });
